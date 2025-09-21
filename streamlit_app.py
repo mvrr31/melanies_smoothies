@@ -1,6 +1,6 @@
 import streamlit as st
 from snowflake.snowpark.functions import col,when_matched
-
+import requests
 # App title and description
 st.title("Customize Your Smoothie :cup_with_straw: ")
 st.write(
@@ -43,3 +43,5 @@ if ingredients_list:
         except Exception as e:
             st.error(f"An error occurred: {e}")
 
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
