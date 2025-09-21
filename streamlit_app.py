@@ -27,7 +27,8 @@ ingredients_list = st.multiselect(
 if ingredients_list:
     # Join ingredients with a space
     ingredients_string = ' '.join(ingredients_list)
-    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+    st.subheader(fruit_chosen +'NutritionInformation')
+    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/"+fruit_choosen)
     sf_df= st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
     # Create the insert statement, specifying both relevant columns
     my_insert_stmt = (
