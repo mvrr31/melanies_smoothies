@@ -27,14 +27,14 @@ ingredients_list = st.multiselect(
 if ingredients_list:
     # Join ingredients with a space
     ingredients_string = ' '.join(ingredients_list)
-    
+    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+    sf_df= st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
     # Create the insert statement, specifying both relevant columns
     my_insert_stmt = (
         "INSERT INTO smoothies.public.orders (ingredients, name_on_order) "
         f"VALUES ('{ingredients_string}','{name_on_order}')"
     )
-    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-    sf_df= st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+   
 
     
     # Insert on button click
